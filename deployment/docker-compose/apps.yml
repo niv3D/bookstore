@@ -1,0 +1,19 @@
+name: 'book-store'
+services:
+  catalog-service:
+    image: niv3d/bookstore-catalog-service
+    container_name: catalog-service
+    environment:
+      - DB_URL=jdbc:postgresql://catalog-db:5432/postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    depends_on:
+      catalog-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 700m

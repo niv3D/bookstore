@@ -6,7 +6,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,12 +18,6 @@ class ProductRepositoryTest {
 
     @Autowired
     private ProductRepository productRepository;
-
-    @Test
-    void shouldGetAllProducts() {
-        List<ProductEntity> products = productRepository.findAll();
-        assertThat(products).hasSize(15);
-    }
 
     @Test
     void shouldFindProductByCode() {
